@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>毕业日期</td>
-            <td>2022-03-31</td>
+            <td>2021-09-29</td>
         </tr>
         <tr>
             <td>专业名称</td>
@@ -69,7 +69,7 @@
         </tr>
         <tr>
             <td>报告日期</td>
-            <td>2022-03-31</td>
+            <td ><div id="date"></div></td>
         </tr>
         <tr>
             <td colspan="2"><h2>以上学历情况属实，专此验证。</h2></td>
@@ -78,6 +78,31 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    window.onload=function () {
+        document.getElementById('date').append(dateFormat("YYYY-mm-dd",new Date()));
+
+    }
+    function dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+            "Y+": date.getFullYear().toString(),        // 年
+            "m+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "M+": date.getMinutes().toString(),         // 分
+            "S+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
+    }
+</script>
 <style>
     .tableBody{
         max-width: 900px;
